@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>coderedvih</title>
+    <link rel="stylesheet"href="css/style.css">
+    <link rel="shortcut icon" href="img/imagen 4.png"rel="icon">
+
+    <p style="color:blue; font-size:14px;"> este es un parrafo con CSS en linea</p>
+
+</head>
+<!------------------BODY----------------->
+
+<body>
+
+    <!------------------HEADER---------------->
+<header>
+    <a href="#inicio" class="logo">
+        <div class="logo-icono">
+             <img src="img/imagen 4.png" width="400px" alt="LOGO VIH">
+        
+        </div>
+       
+             
+      </a>
+    
+
+<nav>
+    <a href="#info"> INFORMACION </a>
+    <a href="#test"> TESTIMONIOS </a>
+    <a href="#video"> VIDEOS </a>
+    <a href="#galeria"> GALERIA </a>
+    <a href="#entid"> ENTIDADES </a>
+
+</nav> 
+
+<button class="menu-btn" aria-label="Menú"> ≡ </button>  
+</header>
+    <!----------------SLIDER--------------->
+    <section class="slider"  id="inicio"> 
+    
+    <div class="slide activo slide-1">
+     <img src="img/imagen1.png"  width="1500px" alt="El VIH no distingue edad" class="slide-bg">
+         <div class="slide-overlay"> 
+            <div class="slide-contenido"> 
+                  <h2> ROMPE <span> el Estigma </span> </h2>
+                <p> Las personas con VIH no pueden tener hijos sanos. </p>
+                <a href="#info" class="btn"> Conoce MÁS </a>
+            </div>
+        </div>
+    </div>
+        
+
+      <section class="slider"  id="inicio"> 
+    
+    <div class="slide activo slide-2">
+     <img src="img/imagen2.png" width="1500px" alt="Prevenir es vida" class="slide-bg">
+         <div class="slide-overlay"> 
+            <div class="slide-contenido"> 
+                  <h2> PREVENCIÓN <span> es VIDA</span> </h2>
+                <p> Romper el estigma del VIH es respetar, informar y no discriminar. </p>
+                <a href="#entid" class="btn"> Busca AYUDA </a>
+            </div>
+        </div>
+    </div>
+       
+    <section class="slider"  id="inicio"> 
+    
+    <div class="slide activo slide-3">
+     <img src="img/imagen3.png" width="1500px" alt="Rompe el estigma" class="slide-bg">
+         <div class="slide-overlay"> 
+            <div class="slide-contenido"> 
+                  <h2> VOCES <span> de REFLEXIÓN</span> </h2>
+                <p> Prevenir el VIH es cuidar tu futuro. </p>
+                <a href="#test" class="btn"> Ver TESTIMONIOS </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="slider-flechas"> 
+        <button class="flecha" onclick="anteriorSlide()"> &#8592; </button> 
+        <button class="flecha" onclick="siguienteSlide()"> &#8592; </button>
+
+    </div>
+    <div class="slider-puntos"> 
+        <button class="punto activo" onclick="mostrarSlide(0)"> </button>
+        <button class="punto" onclick="mostrarSlide(1)"> </button>
+        <button class="punto" onclick="mostrarSlide(2)"> </button>
+        <button class="punto" onclick="mostrarSlide(3)"> </button>
+
+
+    </div>
+
+      </section>
+  
+<!-------------------INFO----------------->
+      
+        <section id="info"> 
+            <div  class="titulo-seccion"> 
+            <h2> ¿Que debes saber sobre el VIH? </h2>
+            <div class="linea"> </div>
+            <p> el VIH no define a una persona  </p>
+          </div>
+          
+          <div class="fotos-grid"> 
+          
+            <div class="foto-card"> 
+            <div class="imagen bg-1">
+                <img src="img/imagen5.png" alt="¿Que es el VIH?" class="">
+            </div>
+            <div class="info"> </div>
+             <h3> ¿Que es el VIH? </h3>
+            <p> es un virus que ataca el sistema inmunológico, encargado de proteger al cuerpo de enfermedades e infecciones.</p>
+            <h3> Formas de prevenir el VIH </h3>
+            <p> La mejor forma de prevenir el VIH es usar correctamente el preservativo en las relaciones sexuales,
+                 realizarse pruebas periódicas, no compartir agujas ni jeringas y recibir educación sobre salud sexual </p>
+                 <h3> Pruebas de deteccion </h3>
+                 <p> Las pruebas de detección permiten saber si una persona tiene VIH. Pueden realizarse mediante una muestra
+                     de sangre o con pruebas rápidas que entregan resultados en pocos minutos </p>
+                     <h3> Tratamiento ARV </h3>
+                     <p> El tratamiento ARV consiste en medicamentos que controlan el VIH al impedir
+                         que el virus se multiplique. Aunque no lo cura, reduce la carga viral, fortalece el sistema inmunológico y permite que
+                             las personas con VIH tengan una vida más saludable y prolongada. </p>
+            </div> 
+            <div class="info">
+            
+
+            </div>
+
+
+
+            </div>
+
+
+
+
+
+
+          </div>
+        
+        
+        
+ 
+            </section>
+
+      <!----------------TESTIMONIOS--------------->
+
+<section id="testimonios">
+    <div class="titulo-section"> 
+        <h2> TESTIMONIOS </h2>    
+        </div>
+
+        <div class="testimonio-gird"> 
+        <div class="linea"></div>
+        <p>historias reales de jovenes colombianos que han enfrentado al VIH con valentía</p>
+      </div>
+
+      <div class="testimonios-grid">
+       <div class="testimonio">
+        <div class="comillas"></div>
+    
+        <p>Soy Mateo,Cuando me diagnosticaron VIH sentí mucho miedo porque pensaba que mi vida cambiaría por completo. 
+        Después de recibir orientación médica y comenzar el tratamiento, entendí que podía seguir estudiando,
+         trabajando y cumpliendo mis metas. Hoy llevo una vida normal y cuido mi salud.</p>
+
+         <div class="autor"> 
+            <div class="avatar">M</div>
+        <div class="autor-info">
+           <span> mateo, 20 años </span> 
+           <span> Medellin, Antioquia </span>
+        </div>
+ </div>
+
+       </div>
+ 
+       <!------------VIDEO---------------->
+    
+    <section class="video">
+    <div class="titulo-seccion">
+    <h2> VIDEO INFORMATIVO</h2>
+    <div class="linea"></div>
+    <p> Aprende mas sobre la prevencion del VIH en colombia</p>
+</div>
+ <div class="video-wrapper">
+<iframe width="560" height="315" src="https://youtu.be/sGdX1-4Ep7s?si=gg-vhpJSuCS9eYx9">
+title="Youtube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write;
+encryted-media; pyroscope; picture-in-pinture; web-share" referrerpolicy="strict-origin-when-cross-origin"
+allowfullscreen></iframe>
+
+
+ </div>
+
+</section>
+
+<!-------------GALERIA----------------->
+ 
+<section id="galeria"> 
+    <div class="titulo-seccion">
+    <h2> GALERIA DE IMAGENES</h2>
+    <div class="linea"></div>
+    <p> aca veras una galeria sobre el VIH </p>
+</div>
+
+
+<div class="galeria-grid"> 
+<div class="galeria-item" data-src="img/GAL1.png"data-alt="campaña de prevencion VIH"> </div>
+<div class="img-placeholder g1">
+   <img src="img/GAL 1.png" width="1400px" alt="">
+</div>
+<div class="galeria-grid"> 
+<div class="galeria-item" data-src="img/GAL1.png"data-alt="campaña de prevencion VIH"> </div>
+<div class="img-placeholder g1">
+   <img src="img/GAL 2.png"width="1400px" alt="">
+</div>
+<div class="galeria-grid"> 
+<div class="galeria-item" data-src="img/GAL1.png"data-alt="campaña de prevencion VIH"> </div>
+<div class="img-placeholder g1">
+   <img src="img/GAL 3.png" width="1400px" alt="">
+</div>
+<div class="galeria-grid"> 
+<div class="galeria-item" data-src="img/GAL1.png"data-alt="campaña de prevencion VIH"> </div>
+<div class="img-placeholder g1">
+   <img src="img/GAL 4.png" width="1400px" alt="">
+</div>
+<div class="galeria-grid"> 
+<div class="galeria-item" data-src="img/GAL1.png"data-alt="campaña de prevencion VIH"> </div>
+<div class="img-placeholder g1">
+   <img src="imG/GAL 5.png"width="1400px" alt="">
+</div>
+
+
+
+
+<div class="overlay">  🔎  </div>
+</div>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lightbox" id="lightbox">
+<button class="lightbox-cerrar" onclick="cerrarLightbox()">X</button>
+<div class="lightbox-contenido">
+    <img class="lightbox-img-real" id="lightbox-img-real" src="" alt="" />
+</div>
+
+<!----------------ENTIDADES---------------->
+<section id="entid">
+
+    <div class="titulo-section">
+        <h2> ENTIDADES </h2>
+        <div class="linea"></div>
+        <p> Entidades de orevencion en colombia </p>        
+    </div>
+
+    <div class="entidades-grid">
+        <a href="https://fundacioneudes.co/">
+            <div class="icono">  </div>
+            <h3> FUNDACION EUDES </h3>
+            <P> Fundacion prevencion del VIH </P>
+        </a>
+    </div>
+
+
+    <div class="entidades-grid">
+        <a href="https://fundacioneudes.co/">
+            <div class="icono">  </div>
+            <h3> FUNDACION EUDES </h3>
+            <P> Fundacion prevencion del VIH </P>
+        </a>
+    </div>
+
+
+    <div class="entidades-grid">
+        <a href="https://fundacioneudes.co/">
+            <div class="icono">  </div>
+            <h3> FUNDACION EUDES </h3>
+            <P> Fundacion prevencion del VIH </P>
+        </a>
+    </div>
+
+</section>
+
+</div>
+</section>
+
+
+</body>
+
+</html>    
+
+    </body >
+
+ </html>
+
+
+
+
+
+
+
+
+
