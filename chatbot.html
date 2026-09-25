@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatbot Colectivo - Grupo de Compañeros</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #0f172a;
+      color: #f8fafc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .chat-card {
+      width: 100%;
+      max-width: 650px;
+      height: 85vh;
+      background-color: #1e293b;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid #334155;
+    }
+
+    .chat-header {
+      padding: 20px;
+      background-color: #0f172a;
+      border-bottom: 1px solid #334155;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar-group {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #6366f1, #a855f7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .header-info h2 {
+      font-size: 1.1rem;
+      color: #f1f5f9;
+    }
+
+    .header-info p {
+      font-size: 0.8rem;
+      color: #94a3b8;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .message {
+      max-width: 80%;
+      padding: 12px 16px;
+      border-radius: 14px;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .bot-message {
+      background-color: #334155;
+      color: #f8fafc;
+      align-self: flex-start;
+      border-bottom-left-radius: 2px;
+    }
+
+    .user-message {
+      background-color: #4f46e5;
+      color: #ffffff;
+      align-self: flex-end;
+      border-bottom-right-radius: 2px;
+    }
+
+    .voice-control {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      color: #94a3b8;
+      padding: 0 20px 10px;
+    }
+
+    .voice-control input {
+      accent-color: #6366f1;
+    }
+
+    .chat-input-area {
+      padding: 16px;
+      background-color: #0f172a;
+      border-top: 1px solid #334155;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 12px 16px;
+      border-radius: 24px;
+      border: 1px solid #334155;
+      background-color: #1e293b;
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    input[type="text"]:focus {
+      border-color: #6366f1;
+    }
+
+    button {
+      background-color: #4f46e5;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 24px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background-color: #4338ca;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="chat-card">
+    <div class="chat-header">
+      <div class="avatar-group">👥</div>
+      <div class="header-info">
+        <h2>Asistente Colectivo del Grupo</h2>
+        <p>Representación combinada de los 5 compañeros</p>
+      </div>
+    </div>
+
+    <div class="chat-messages" id="chatMessages">
+      <div class="message bot-message">
+        ¡Hola! Soy la suma de las personalidades y gustos de los 5 compañeros. Pregúntame sobre nuestra música, películas, deportes, materias, comidas, fortalezas o debilidades.
+      </div>
+    </div>
+
+    <div class="voice-control">
+      <input type="checkbox" id="voiceToggle" checked>
+      <label for="voiceToggle">Activar respuesta por voz 🔊</label>
+    </div>
+
+    <div class="chat-input-area">
+      <input type="text" id="userInput" placeholder="Pregunta sobre nuestras canciones, deportes, comidas..." onkeypress="handleKeyPress(event)">
+      <button onclick="sendMessage()">Enviar</button>
+    </div>
+  </div>
+
+  <script>
+    // Datos procesados e integrados de las 5 encuestas
+    const grupo = {
+      canciones: ["Cabaña (Jordán 23)", "La Santa (Romeo Santos)", "Sweet Child O' Mine (Guns N' Roses)", "Welcome to My Crib", "Sin Ti (Los Guerreros del Bajo)"],
+      generosMusica: ["Reggaeton", "Bachata", "Rock"],
+      peliculas: ["Cars (Rayo McQueen)", "El Conjuro", "Spider-Man: Brand New Day", "Avatar: La Leyenda de Aang", "Una Voz Silenciosa"],
+      generosPelicula: ["Acción", "Terror", "Drama"],
+      deportes: ["Fútbol", "Voleibol", "Baloncesto"],
+      materias: ["Física", "Matemáticas", "Inglés"],
+      comidas: ["Arroz atollado", "Camarones", "Espinaca con huevo", "Papas en crema", "Ensalada de frutas"],
+      fortalezas: ["Divertido", "Organizada", "Amigable", "Sociable", "Resiliente"],
+      debilidades: ["Fastidioso", "Sensible", "Distraído", "Obstinado"]
+    };
+
+    function speak(text) {
+      if (!document.getElementById('voiceToggle').checked) return;
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'es-ES';
+        utterance.rate = 1.0;
+        window.speechSynthesis.speak(utterance);
+      }
+    }
+
+    function generateResponse(text) {
+      const lower = text.toLowerCase();
+
+      if (lower.includes("hola") || lower.includes("buenas") || lower.includes("que tal")) {
+        return "¡Hola! Qué gusto saludarte. Soy la voz del grupo de los 5 compañeros. ¿De qué te gustaría hablar?";
+      }
+      if (lower.includes("cancion") || lower.includes("canciones") || lower.includes("musica") || lower.includes("escuchan")) {
+        return `En el grupo nos gusta variedad de géneros como ${grupo.generosMusica.join(", ")}. Entre nuestras canciones favoritas están: ${grupo.canciones.join(", ")}.`;
+      }
+      if (lower.includes("pelicula") || lower.includes("cine") || lower.includes("serie") || lower.includes("ver")) {
+        return `En películas y series tenemos gustos muy variados (${grupo.generosPelicula.join(", ")}). Nos destacan títulos como ${grupo.peliculas.join(", ")}.`;
+      }
+      if (lower.includes("deporte") || lower.includes("deportes") || lower.includes("ejercicio") || lower.includes("juegan")) {
+        return `El deporte favorito del grupo es el ${grupo.deportes[0]} (a dos de nosotros nos encanta), pero también practicamos ${grupo.deportes[1]} y ${grupo.deportes[2]}. ¡Aunque uno del grupo prefiere no hacer deporte!`;
+      }
+      if (lower.includes("materia") || lower.includes("materias") || lower.includes("clase") || lower.includes("estudio")) {
+        return `Nuestras materias favoritas en el grupo son ${grupo.materias[0]} y ${grupo.materias[1]} (las que más se repiten), además de ${grupo.materias[2]}.`;
+      }
+      if (lower.includes("comida") || lower.includes("comer") || lower.includes("plato") || lower.includes("platos")) {
+        return `A la hora de comer hay gustos muy diversos: ${grupo.comidas.join(", ")}.`;
+      }
+      if (lower.includes("fortaleza") || lower.includes("fortalezas") || lower.includes("bueno") || lower.includes("fuerte")) {
+        return `Como grupo destacamos por ser personas ${grupo.fortalezas.join(", ").toLowerCase()}.`;
+      }
+      if (lower.includes("debilidad") || lower.includes("debilidades") || lower.includes("malo") || lower.includes("defecto")) {
+        return `Reconocemos nuestras debilidades: a veces tendemos a ser ${grupo.debilidades.join(", ").toLowerCase()} (especialmente distraídos en clase).`;
+      }
+      if (lower.includes("quien eres") || lower.includes("quienes son") || lower.includes("compañeros")) {
+        return "Soy la inteligencia artificial que representa el promedio y la suma de gustos de los 5 compañeros entrevistados.";
+      }
+
+      return "Como grupo tenemos gustos variados en música (Reggaeton, Rock, Bachata), deportes (Fútbol, Voleibol, Baloncesto) y materias como Física y Matemáticas. ¿Quieres saber sobre algo en específico?";
+    }
+
+    function sendMessage() {
+      const input = document.getElementById('userInput');
+      const text = input.value.trim();
+      if (!text) return;
+
+      const chatMessages = document.getElementById('chatMessages');
+
+      const userDiv = document.createElement('div');
+      userDiv.className = 'message user-message';
+      userDiv.textContent = text;
+      chatMessages.appendChild(userDiv);
+
+      input.value = '';
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+
+      setTimeout(() => {
+        const reply = generateResponse(text);
+        const botDiv = document.createElement('div');
+        botDiv.className = 'message bot-message';
+        botDiv.textContent = reply;
+        chatMessages.appendChild(botDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        speak(reply);
+      }, 300);
+    }
+
+    function handleKeyPress(event) {
+      if (event.key === 'Enter') {
+        sendMessage();
+      }
+    }
+  </script>
+
+</body>
+</html>
